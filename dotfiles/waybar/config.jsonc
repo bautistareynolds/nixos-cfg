@@ -1,0 +1,49 @@
+// https://github.com/Alexays/Waybar/wiki
+// Reload after editing: `pkill waybar; waybar &` (or SIGUSR2: `pkill -SIGUSR2 waybar`)
+{
+    "layer": "top",
+    "position": "top",
+    "height": 30,
+
+    "modules-left": ["hyprland/workspaces", "hyprland/window"],
+    "modules-center": ["clock"],
+    "modules-right": ["tray", "hyprland/language", "pulseaudio", "bluetooth", "network", "cpu", "memory"],
+
+    "hyprland/window": { "max-length": 60 },
+    "hyprland/language": { "format": "{short}" },
+
+    "clock": {
+        "format": "{:%a %d %b  %H:%M}",
+        "tooltip-format": "<tt>{calendar}</tt>"
+    },
+
+    "tray": { "spacing": 8 },
+
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-muted": "󰝟 muted",
+        "format-icons": { "default": ["󰕿", "󰖀", "󰕾"] },
+        "on-click": "pavucontrol",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    },
+
+    "bluetooth": {
+        "format": "󰂯",
+        "format-off": "󰂲",
+        "format-connected": "󰂱 {num_connections}",
+        "tooltip-format-connected": "{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias} {device_battery_percentage}%",
+        "on-click": "overskride"
+    },
+
+    "network": {
+        "format-ethernet": "󰈀",
+        "format-wifi": "󰖩 {essid}",
+        "format-disconnected": "󰖪",
+        "tooltip-format": "{ifname} {ipaddr}",
+        "on-click": "nm-connection-editor"
+    },
+
+    "cpu": { "format": "󰻠 {usage}%", "on-click": "mission-center" },
+    "memory": { "format": "󰍛 {percentage}%", "on-click": "mission-center" }
+}

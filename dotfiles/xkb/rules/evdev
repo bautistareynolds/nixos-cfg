@@ -1,0 +1,6 @@
+// Extends the system evdev rules with custom options (libxkbcommon user config).
+// Docs: https://xkbcommon.org/doc/current/user-configuration.html
+! include %S/evdev
+
+! option                       = compat
+  custom:caps_unlock_on_press  = +custom(caps_unlock_on_press)
