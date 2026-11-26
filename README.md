@@ -54,7 +54,7 @@ You land on a text login (tuigreet) that starts Hyprland.
 
 ```sh
 cd ~/nixos-cfg
-sudo nixos-rebuild switch --flake .#nixos-desktop   # apply nix changes
+nrs                                                  # apply nix changes (alias for nixos-rebuild switch)
 nix flake update && sudo nixos-rebuild switch --flake .#nixos-desktop   # update everything
 nix fmt                                              # format .nix files
 git add -A && git commit -m "..."                    # commit after every working change

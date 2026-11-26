@@ -73,6 +73,12 @@ in
     };
   };
 
+  # Home Manager manages ~/.bashrc so aliases apply.
+  programs.bash.enable = true;
+  home.shellAliases = {
+    nrs = "sudo nixos-rebuild switch --flake ${repo}#nixos-desktop";
+  };
+
   # Dark mode for GTK / libadwaita apps.
   dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
 
