@@ -1,4 +1,4 @@
-# nixos-desktop
+# nixos-cfg
 
 NixOS 26.05 + Hyprland 0.55, flake + Home Manager.
 
@@ -23,7 +23,7 @@ dotfiles/                      plain config files, edited directly
 Dotfiles are symlinked out of the repo (`mkOutOfStoreSymlink`), so editing them takes
 effect immediately (no rebuild), and git still tracks every change.
 
-The repo must live at `~/nixos` for those links to resolve.
+The repo must live at `~/nixos-cfg` for those links to resolve.
 
 ## Install
 
@@ -33,17 +33,18 @@ The repo must live at `~/nixos` for those links to resolve.
    - User **sun**, hostname **nixos-desktop**.
    - Desktop: **No desktop** (Hyprland comes from this config).
    - Allow unfree software: yes.
-   - Partitions: **Erase disk** on the 1 TB Kingston NVMe. (Windows goes away here.)
+   - Partitions: **Erase disk** on the 1 TB Kingston NVMe (Windows goes away here).
+     Swap: **No swap**. Filesystem: **ext4**. Swap is an 8 GB file set in `hosts/nixos-desktop/default.nix`.
 3. Reboot, log in on the text console as `sun`, then:
 
 ```sh
 nix-shell -p git
-git clone <this repo's URL> ~/nixos
-cp /etc/nixos/hardware-configuration.nix ~/nixos/hosts/nixos-desktop/
-cd ~/nixos
+git clone https://github.com/bautistareynolds/nixos-cfg ~/nixos-cfg
+cp /etc/nixos/hardware-configuration.nix ~/nixos-cfg/hosts/nixos-desktop/
+cd ~/nixos-cfg
 git add -A          # flakes only see files git knows about!
 sudo env NIX_CONFIG="experimental-features = nix-command flakes" \
-  nixos-rebuild switch --flake ~/nixos#nixos-desktop
+  nixos-rebuild switch --flake ~/nixos-cfg#nixos-desktop
 reboot
 ```
 
@@ -52,7 +53,7 @@ You land on a text login (tuigreet) that starts Hyprland.
 ## Day to day
 
 ```sh
-cd ~/nixos
+cd ~/nixos-cfg
 sudo nixos-rebuild switch --flake .#nixos-desktop   # apply nix changes
 nix flake update && sudo nixos-rebuild switch --flake .#nixos-desktop   # update everything
 nix fmt                                              # format .nix files

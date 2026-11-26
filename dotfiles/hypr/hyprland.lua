@@ -1,6 +1,6 @@
 -- Hyprland 0.55+ config (Lua). Bare bones on purpose - rice later.
 -- Wiki: https://wiki.hypr.land/Configuring/Start/
--- Edits apply live on save; no nixos-rebuild needed (this file is symlinked from ~/nixos/dotfiles).
+-- Edits apply live on save; no nixos-rebuild needed (this file is symlinked from ~/nixos-cfg/dotfiles).
 
 ---- MONITORS ----
 -- Run `hyprctl monitors` to see names/modes. Use mode = "highrr" to force the highest refresh rate.
@@ -56,7 +56,7 @@ hl.config({
     input = {
         kb_layout    = "latam,us",
         -- grp:alt_shift_toggle  -> Alt+Shift switches layout
-        -- custom:caps_unlock_on_press -> Caps Lock turns off on press (fixes "HEllo"); see ~/nixos/dotfiles/xkb
+        -- custom:caps_unlock_on_press -> Caps Lock turns off on press (fixes "HEllo"); see ~/nixos-cfg/dotfiles/xkb
         kb_options   = "grp:alt_shift_toggle,custom:caps_unlock_on_press",
         follow_mouse = 1,
         sensitivity  = 0,

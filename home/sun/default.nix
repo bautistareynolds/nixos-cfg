@@ -3,7 +3,7 @@
 let
   # Dotfiles are linked straight from the repo (not copied into the nix store),
   # so you can edit them and reload live, and they're still tracked in git.
-  repo = "${config.home.homeDirectory}/nixos";
+  repo = "${config.home.homeDirectory}/nixos-cfg";
   link = path: config.lib.file.mkOutOfStoreSymlink "${repo}/dotfiles/${path}";
 in
 {
